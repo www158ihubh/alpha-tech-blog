@@ -1,135 +1,119 @@
+/* 涂曦月 · 求职作品集 交互脚本 */
 (function () {
-  'use strict';
+  "use strict";
 
-  var header = document.getElementById('siteHeader');
-  function onScroll() {
-    if (header) header.classList.toggle('scrolled', window.scrollY > 10);
-  }
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
+  /* ---------- 轮播 ---------- */
+  const slides = Array.from(document.querySelectorAll("#showcaseViewport .slide"));
+  const dotsBox = document.getElementById("slideDots");
+  let cur = 0, timer = null;
 
-  var navToggle = document.getElementById('navToggle');
-  function closeNav() {
-    document.body.classList.remove('nav-open');
-    if (navToggle) {
-      navToggle.setAttribute('aria-expanded', 'false');
-      navToggle.setAttribute('aria-label', '打开菜单');
+  if (slides.length && dotsBox) {
+    slides.forEach((_, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("aria-label", "第 " + (i + 1) + " 张");
+      if (i === 0) b.classList.add("on");
+      b.addEventListener("click", () => go(i, true));
+      dotsBox.appendChild(b);
+    });
+    const dots = Array.from(dotsBox.children);
+
+    function go(i, manual) {
+      cur = (i + slides.length) % slides.length;
+      slides.forEach((s, k) => s.classList.toggle("is-active", k === cur));
+      dots.forEach((d, k) => d.classList.toggle("on", k === cur));
+      if (manual) restart();
     }
-  }
-  if (navToggle) {
-    navToggle.addEventListener('click', function () {
-      var open = document.body.classList.toggle('nav-open');
-      navToggle.setAttribute('aria-expanded', String(open));
-      navToggle.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
-    });
-  }
-  document.querySelectorAll('.mobile-nav a').forEach(function (a) {
-    a.addEventListener('click', closeNav);
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeNav();
-  });
-
-  var revealIO = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        revealIO.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(function (el) { revealIO.observe(el); });
-
-  function animateCount(el) {
-    var target = parseInt(el.getAttribute('data-count'), 10);
-    var suffix = el.getAttribute('data-suffix') || '';
-    var duration = 1400;
-    var start = null;
-    function tick(ts) {
-      if (!start) start = ts;
-      var p = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * eased) + suffix;
-      if (p < 1) requestAnimationFrame(tick);
+    function restart() {
+      clearInterval(timer);
+      timer = setInterval(() => go(cur + 1), 5000);
     }
-    requestAnimationFrame(tick);
-  }
-  var countIO = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        animateCount(entry.target);
-        countIO.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.6 });
-  document.querySelectorAll('[data-count]').forEach(function (el) { countIO.observe(el); });
-
-  document.querySelectorAll('.faq-item').forEach(function (item) {
-    var q = item.querySelector('.faq-q');
-    var a = item.querySelector('.faq-a');
-    if (!q || !a) return;
-    q.addEventListener('click', function () {
-      var open = item.classList.toggle('open');
-      q.setAttribute('aria-expanded', String(open));
-      a.style.maxHeight = open ? a.scrollHeight + 'px' : '0px';
-    });
-  });
-  var firstFaq = document.querySelector('.faq-item');
-  if (firstFaq) {
-    var fq = firstFaq.querySelector('.faq-q');
-    var fa = firstFaq.querySelector('.faq-a');
-    firstFaq.classList.add('open');
-    if (fq) fq.setAttribute('aria-expanded', 'true');
-    if (fa) fa.style.maxHeight = fa.scrollHeight + 'px';
+    document.getElementById("slidePrev").addEventListener("click", () => go(cur - 1, true));
+    document.getElementById("slideNext").addEventListener("click", () => go(cur + 1, true));
+    restart();
   }
 
-  var filterBtns = document.querySelectorAll('.filter-btn');
-  var works = document.querySelectorAll('.work-card');
-  filterBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      filterBtns.forEach(function (b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      var f = btn.getAttribute('data-filter');
-      works.forEach(function (w) {
-        var show = f === 'all' || w.getAttribute('data-cat') === f;
-        w.classList.toggle('hide', !show);
-        w.classList.remove('show');
-        if (show) {
-          requestAnimationFrame(function () {
-            requestAnimationFrame(function () { w.classList.add('show'); });
-          });
-        }
+  /* ---------- 移动端菜单 ---------- */
+  const toggle = document.getElementById("navToggle");
+  const mobileNav = document.getElementById("mobileNav");
+  if (toggle && mobileNav) {
+    toggle.addEventListener("click", () => {
+      const open = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!open));
+      mobileNav.classList.toggle("open", !open);
+    });
+    mobileNav.querySelectorAll("a").forEach(a =>
+      a.addEventListener("click", () => {
+        toggle.setAttribute("aria-expanded", "false");
+        mobileNav.classList.remove("open");
+      })
+    );
+  }
+
+  /* ---------- 导航高亮(滚动监听) ---------- */
+  const navLinks = Array.from(document.querySelectorAll('.nav a[href^="#"], .mobile-nav a[href^="#"]'));
+  const sections = navLinks
+    .map(a => document.querySelector(a.getAttribute("href")))
+    .filter(Boolean);
+
+  function setActive() {
+    const pos = window.scrollY + 120;
+    let idx = 0;
+    sections.forEach((sec, i) => { if (sec.offsetTop <= pos) idx = i; });
+    navLinks.forEach(a => {
+      const sec = a.getAttribute("href");
+      const target = sections[idx];
+      a.classList.toggle("active", !!target && sec === "#" + target.id);
+    });
+  }
+  window.addEventListener("scroll", setActive, { passive: true });
+  setActive();
+
+  /* ---------- 入场动画 ---------- */
+  const reveals = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
       });
-    });
-  });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => io.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add("in"));
+  }
 
-  var form = document.getElementById('contactForm');
-  if (form) {
-    form.addEventListener('submit', function (e) {
+  /* ---------- 返回顶部 ---------- */
+  const backTop = document.getElementById("backTop");
+  if (backTop) {
+    window.addEventListener("scroll", () => {
+      backTop.classList.toggle("show", window.scrollY > 600);
+    }, { passive: true });
+    backTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  }
+
+  /* ---------- 联系表单(mailto 提交) ---------- */
+  const form = document.getElementById("contactForm");
+  const tip = document.getElementById("formTip");
+  if (form && tip) {
+    form.addEventListener("submit", e => {
       e.preventDefault();
-      var ok = true;
-      form.querySelectorAll('[required]').forEach(function (input) {
-        var field = input.closest('.field');
-        var value = input.value.trim();
-        var valid = value !== '';
-        if (valid && input.type === 'email') {
-          valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-        }
-        if (valid && input.type === 'tel') {
-          valid = /^1[3-9]\d{9}$/.test(value) || /^0\d{2,3}-?\d{7,8}$/.test(value);
-        }
-        field.classList.toggle('error', !valid);
-        if (!valid) ok = false;
-      });
-      if (ok) {
-        var card = form.closest('.form-card');
-        if (card) card.classList.add('sent');
-        var success = card.querySelector('.form-success');
-        if (success) success.setAttribute('tabindex', '-1'), success.focus();
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+      if (!name || !email || !message) {
+        tip.textContent = "请填写姓名、邮箱与留言后再发送。";
+        tip.style.color = "#ff5d8f";
+        return;
       }
+      const subject = encodeURIComponent("【作品集联系】来自 " + name);
+      const body = encodeURIComponent(message + "\n\n联系方式:" + email + (form.phone.value.trim() ? " / " + form.phone.value.trim() : ""));
+      window.location.href = "mailto:3067508795@qq.com?subject=" + subject + "&body=" + body;
+      tip.textContent = "已打开邮件客户端,若未弹出请直接发送至 3067508795@qq.com。";
+      tip.style.color = "#2fe6a8";
     });
   }
 
-  var year = document.getElementById('year');
+  /* ---------- 年份 ---------- */
+  const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
 })();
