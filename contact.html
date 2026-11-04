@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>联系我们 - 预约免费咨询 | Alpha的技术博客</title>
+  <meta name="description" content="联系Alpha的技术博客，预约虚拟现实开发、小游戏开发、工业数字孪生、网站开发与技术培训免费咨询，1个工作日内回复方案与报价。">
+  <meta name="keywords" content="小游戏,虚拟现实,培训,高斯泼溅,预约咨询,联系我们">
+  <meta name="theme-color" content="#06080f">
+  <link rel="canonical" href="https://www.alphatech.cn/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="联系我们 - Alpha的技术博客">
+  <meta property="og:description" content="预约免费咨询，1个工作日内回复方案与报价。">
+  <meta property="og:url" content="https://www.alphatech.cn/contact.html">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=70">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322d3ee'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' fill='white' font-family='Georgia'%3Eα%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="Alpha的技术博客 首页">
+        <span class="logo-mark">α</span>
+        <span class="logo-text">Alpha<em> 的技术博客</em></span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="about.html">关于我们</a>
+        <a href="services.html">服务</a>
+        <a href="portfolio.html">作品集</a>
+        <a href="contact.html" class="active">联系我们</a>
+      </nav>
+      <a href="contact.html" class="btn btn--primary btn--sm header-cta">预约咨询</a>
+      <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span></button>
+    </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="移动端导航">
+      <a href="index.html">首页</a>
+      <a href="about.html">关于我们</a>
+      <a href="services.html">服务</a>
+      <a href="portfolio.html">作品集</a>
+      <a href="contact.html" class="active">联系我们</a>
+      <a href="contact.html" class="btn btn--primary">预约免费咨询</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="grid-lines" aria-hidden="true"></div>
+      <div class="orb orb--cyan" aria-hidden="true"></div>
+      <div class="orb orb--violet" aria-hidden="true"></div>
+      <div class="container">
+        <span class="badge">联系我们</span>
+        <h1>聊聊你的<span class="grad-text">项目</span></h1>
+        <p class="lead">告诉我们你的想法，1 个工作日内回复，附赠一份免费的可行性建议与技术选型参考。</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:24px">
+      <div class="container contact-grid">
+        <div class="form-card reveal">
+          <h2>预约咨询</h2>
+          <p>填写以下信息，我们会在 1 个工作日内与你联系。您的信息仅用于本次沟通，严格保密。</p>
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="field">
+                <label for="name">姓名 <span>*</span></label>
+                <input type="text" id="name" name="name" placeholder="您的称呼" required>
+                <p class="err">请填写您的姓名</p>
+              </div>
+              <div class="field">
+                <label for="email">邮箱 <span>*</span></label>
+                <input type="email" id="email" name="email" placeholder="name@company.com" required>
+                <p class="err">请填写有效的邮箱地址</p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="phone">电话 <span>*</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="手机号或座机，如 13800001234" required>
+              <p class="err">请填写有效的电话号码</p>
+            </div>
+            <div class="field">
+              <label for="message">留言 <span>*</span></label>
+              <textarea id="message" name="message" placeholder="简单描述您的项目需求，例如：想为新品发布会制作一个 VR 展厅，支持头显与网页双端……" required></textarea>
+              <p class="err">请简单描述您的项目需求</p>
+            </div>
+            <button type="submit" class="btn btn--primary btn--lg btn--block">提交预约咨询</button>
+          </form>
+          <div class="form-success" role="status" aria-live="polite">
+            <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+            <h3>已收到您的预约</h3>
+            <p>我们将在 1 个工作日内与您联系。<br>也可直接拨打 <a href="tel:4008056188" style="color:var(--cyan)">400-805-6188</a> 加快沟通。</p>
+          </div>
+        </div>
+
+        <aside class="info-side reveal" data-delay="1">
+          <div class="info-card">
+            <h4>联系信息</h4>
+            <div class="info-item">
+              <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <div>
+                <h4>办公地址</h4>
+                <p>北京市朝阳区电子城科技园 A 座 12 层</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L8 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.9 2z"/></svg></span>
+              <div>
+                <h4>咨询热线</h4>
+                <a href="tel:4008056188">400-805-6188</a>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span>
+              <div>
+                <h4>邮箱</h4>
+                <a href="mailto:hello@alphatech.cn">hello@alphatech.cn</a>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+              <div>
+                <h4>工作时间</h4>
+                <p>周一至周五 9:00 – 18:30</p>
+              </div>
+            </div>
+          </div>
+          <div class="info-card">
+            <h4>关注我们</h4>
+            <p style="color:var(--muted);font-size:14px;margin-bottom:16px">获取最新虚拟现实、小游戏与高斯泼溅技术文章。</p>
+            <div class="socials">
+              <a class="social" href="https://weixin.qq.com" target="_blank" rel="noopener" aria-label="微信公众号"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a>
+              <a class="social" href="https://www.bilibili.com" target="_blank" rel="noopener" aria-label="哔哩哔哩"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2.5"/><path d="M17 2l-5 5-5-5"/></svg></a>
+              <a class="social" href="https://www.douyin.com" target="_blank" rel="noopener" aria-label="抖音"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></a>
+              <a class="social" href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 22v-3.5c0-1-.2-1.7-.7-2.2 2.4-.3 4.9-1.2 4.9-5.3 0-1.2-.4-2.1-1.1-2.9.1-.3.5-1.4-.1-2.9 0 0-.9-.3-3 1.1a10.3 10.3 0 0 0-5.4 0C8.5 4.9 7.6 5.2 7.6 5.2c-.6 1.5-.2 2.6-.1 2.9-.7.8-1.1 1.7-1.1 2.9 0 4.1 2.5 5 4.9 5.3-.5.5-.7 1.2-.7 2.2V22"/><path d="M9 18c-2.8 1-4.5-.5-5-1.5"/></svg></a>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="container">
+        <div class="map-wrap reveal">
+          <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=116.4347%2C39.8951%2C116.5147%2C39.9351&amp;layer=mapnik&amp;marker=39.9151%2C116.4747" title="Alpha的技术博客办公地址地图" loading="lazy"></iframe>
+          <a class="map-open" href="https://uri.amap.com/marker?position=116.4747%2C39.9151&amp;name=Alpha%E7%9A%84%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2" target="_blank" rel="noopener">在高德地图中打开 ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" aria-label="Alpha的技术博客 首页">
+            <span class="logo-mark">α</span>
+            <span class="logo-text">Alpha<em> 的技术博客</em></span>
+          </a>
+          <p>专注虚拟现实、小游戏与数字孪生开发的源头技术团队，为广告、影视、高校、企业、军工与银行客户提供从创意到交付的一站式服务。</p>
+          <div class="socials">
+            <a class="social" href="https://weixin.qq.com" target="_blank" rel="noopener" aria-label="微信公众号"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a>
+            <a class="social" href="https://www.bilibili.com" target="_blank" rel="noopener" aria-label="哔哩哔哩"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2.5"/><path d="M17 2l-5 5-5-5"/></svg></a>
+            <a class="social" href="https://www.douyin.com" target="_blank" rel="noopener" aria-label="抖音"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></a>
+            <a class="social" href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 22v-3.5c0-1-.2-1.7-.7-2.2 2.4-.3 4.9-1.2 4.9-5.3 0-1.2-.4-2.1-1.1-2.9.1-.3.5-1.4-.1-2.9 0 0-.9-.3-3 1.1a10.3 10.3 0 0 0-5.4 0C8.5 4.9 7.6 5.2 7.6 5.2c-.6 1.5-.2 2.6-.1 2.9-.7.8-1.1 1.7-1.1 2.9 0 4.1 2.5 5 4.9 5.3-.5.5-.7 1.2-.7 2.2V22"/><path d="M9 18c-2.8 1-4.5-.5-5-1.5"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>快速链接</h4>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about.html">关于我们</a></li>
+            <li><a href="services.html">服务体系</a></li>
+            <li><a href="portfolio.html">作品集</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>核心服务</h4>
+          <ul>
+            <li><a href="services.html#vr">虚拟现实开发制作</a></li>
+            <li><a href="services.html#game">小游戏开发</a></li>
+            <li><a href="services.html#miniapp">小程序开发</a></li>
+            <li><a href="services.html#twin">工业数字孪生</a></li>
+            <li><a href="services.html#web">网站开发</a></li>
+            <li><a href="services.html#training">技术培训</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>联系我们</h4>
+          <ul class="footer-contact">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>北京市朝阳区电子城科技园 A 座 12 层</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L8 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.9 2z"/></svg><a href="tel:4008056188">400-805-6188</a></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg><a href="mailto:hello@alphatech.cn">hello@alphatech.cn</a></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>周一至周五 9:00 – 18:30</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="year">2026</span> Alpha的技术博客 · 保留所有权利</p>
+        <p>虚拟现实开发 · 小游戏开发 · 高斯泼溅 · 技术培训</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
